@@ -21,10 +21,10 @@ function active($filename, $target) {
           <a class="nav-link <?php echo active($filename, "index.php"); ?>" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo active($filename, "overview.php"); ?>" href="overview.php">Overview</a>
+          <a class="nav-link <?php echo active($filename, "overview.php"); ?>" href="overview.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo active($filename, "progress.php"); ?>" href="progress.php">Progress</a>
+          <a class="nav-link <?php echo active($filename, "profile.php"); ?>" href="profile.php">Profil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <?php echo active($filename, "newsletter.php"); ?>" href="newsletter.php">Newsletter</a>
