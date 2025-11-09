@@ -1,0 +1,15 @@
+.log-inbox {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+.btn-green {
+    background-color: #4CAF50;
+    color: white;
+}
+.btn-green:hover {
+    background-color: #45a049;
+}
