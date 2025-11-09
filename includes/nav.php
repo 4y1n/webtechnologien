@@ -9,7 +9,7 @@ function active($filename, $target) {
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
   <div class="container">
-    <a class="navbar-brand" href="index.php">My App</a>
+    <a class="navbar-brand" href="index.php">Grünraum</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,10 @@ function active($filename, $target) {
           <a class="nav-link <?php echo active($filename, "profile.php"); ?>" href="profile.php">Profil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo active($filename, "newsletter.php"); ?>" href="newsletter.php">Newsletter</a>
+          <a class="nav-link <?php echo active($filename, "registation.php"); ?>" href="registration.php">Konto erstellen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?php echo active($filename, "login.php"); ?>" href="login.php">Anmelden</a>
         </li>
       </ul>
     </div>
