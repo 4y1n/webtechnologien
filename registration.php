@@ -5,7 +5,7 @@
     <title>Konto erstellen</title>
 </head>
 <body>
-    <?php require_once "includes/nav.php"; ?>
+    
     <div class="container log-inbox">
     <form method="POST">
         <h3 class="text-center mb-4">Konto erstellen</h3>

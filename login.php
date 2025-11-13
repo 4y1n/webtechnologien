@@ -5,7 +5,7 @@
     <title>Anmelden</title>
 </head>
 <body>
-    <?php require_once "includes/nav.php"; ?>
+    
      <div class="container log-inbox">
     <form method="POST">
         <h3 class="text-center mb-4">Anmelden</h3>
@@ -19,5 +19,6 @@
             <input type="password" name="password" class="form-control" placeholder="••••••••" required>
         </div>
          <button type="submit" class="btn btn-green w-100">Anmelden</button>
+         <p class ="text-center mb-4"><a href="forgot_pw.php">Passwort vergessen</a></p>
 </body>
     </html>

@@ -24,9 +24,6 @@ function active($filename, $target) {
           <a class="nav-link <?php echo active($filename, "overview.php"); ?>" href="overview.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo active($filename, "profile.php"); ?>" href="profile.php">Profil</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link <?php echo active($filename, "registation.php"); ?>" href="registration.php">Konto erstellen</a>
         </li>
         <li class="nav-item">

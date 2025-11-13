@@ -10,38 +10,18 @@
 
   <div class="container">
     <div class="row">
-      <h1>Dashboard</h1>
+      <div class="col-3"><div class="card"><h1>Dashboard</h1></div></div>
+      <div class="col-2"><div class="card"><a href="profile.php">Profil bearbeiten</a></div></div>
+      <div class="col-2"><div class="card"><a href="new_post.php">Neuen Beitrag erstellen</a></div></div>
+      <h3>Username</h3>
+      
     </div>
-
-    <div class="row">
-      <?php for ($i = 0; $i < 4; $i++): ?>
-        <div class="col-3">
-          <div class="card mb-3">
-            <div class="card-body">
-              This is some text within a card body.
-            </div>
-          </div>
-        </div>
-      <?php endfor; ?>
-    </div>
-
-    <div class="row">
-      <div class="col-6">
-        <div class="card mb-3">
-          <div class="card-body">
-            This is some text within a card body.
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="card mb-3">
-          <div class="card-body">
-            This is some text within a card body.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+ <div class="row">
+  <div class="col-3"><div class="card">Beiträge</div></div>
+  <div class="col-3"><div class="card">Kommentare</div></div>
+  <div class="col-3"><div class="card">Likes</div></div>
+  <div class="col-3"><div class="card">Gespeicherte Beiträge</div></div>
+</div>
+</div>
 </body>
 </html>

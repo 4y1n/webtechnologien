@@ -1,6 +1,6 @@
 <!-- index.php -->
 <!DOCTYPE html>
-<html lang="de">
+<html lang="">
 <head>
   <?php require_once "includes/head.php"; ?>
   <title>Home</title>
