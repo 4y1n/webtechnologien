@@ -11,7 +11,8 @@
     <div class="row">
         <div class="col-md-4 text-center">
             <img src="../assets/img/profile-placeholder.png" class="img-fluid" alt="Profilbild">
-            <button class="btn btn-secondary btn-sm w-100">Profilbild ändern</button>
+            <input type="file" name="image" id="image" class="d-none" accept="image/png, image/jpeg" required>
+            <label for="image" class="btn btn-secondary btn-green w-100">Profilbild ändern</label>
         </div>
         <div class="col-md-8">
             <form method="POST" action="#">

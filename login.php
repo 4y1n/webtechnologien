@@ -12,7 +12,7 @@
         <p class ="text-center mb-4">Noch kein Konto? <a href="registration.php">Registrieren</a></p>
         <div class="mb-3">
             <label class="form-label">E-Mail</label>
-            <input type="email" name="email" class="form-control" placeholder="name@beispiel.de" required>
+            <input type="email" name="email" class="form-control" placeholder="Useremail" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Passwort</label>

@@ -19,7 +19,7 @@
         <div class="col-3">
           <div class="card mb-3">
             <div class="card-body">
-              This is some text within a card body.
+              Kategorien
             </div>
           </div>
         </div>
@@ -30,14 +30,14 @@
       <div class="col-6">
         <div class="card mb-3">
           <div class="card-body">
-            This is some text within a card body.
+            Hier werden die populärsten Beiträge zu sehen sein
           </div>
         </div>
       </div>
       <div class="col-6">
         <div class="card mb-3">
           <div class="card-body">
-            This is some text within a card body.
+            Hier werden die populärsten Beiträge zu sehen sein
           </div>
         </div>
       </div>

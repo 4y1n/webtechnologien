@@ -12,12 +12,12 @@
         <p class ="text-center mb-4">Bereits registriert? <a href="login.php">Anmelden</a></p>
         <div class="mb-3">
             <label class="form-label">E-Mail</label>
-            <input type="email" name="email" class="form-control" placeholder="name@beispiel.de" required>
+            <input type="email" name="email" class="form-control" placeholder="Useremail" required>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Benutzername</label>
-            <input type="text" name="username" class="form-control" placeholder="Dein Name" required>
+            <input type="text" name="username" class="form-control" placeholder="Benutzername" required>
         </div>
 
         <div class="mb-3">

@@ -30,7 +30,7 @@
                 <input type="file" name="image" id="image" class="form-control" accept="image/png, image/jpeg" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <button type="submit" class="btn btn-green">Upload</button>
         </form>
     </main>
 
