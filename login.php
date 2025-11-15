@@ -1,3 +1,23 @@
+<?php
+session_start();
+$error = "";// Hardcoded demo credentials
+$adminUser = "admin@mail.com";
+$adminPass = "admin123";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$username = trim($_POST['email'] ?? '');
+$password = trim($_POST['password'] ?? '');
+if ($username === $adminUser && $password === $adminPass) {
+$_SESSION["admin_logged_in"] = true;
+// Set new session variable
+header("Location: admin_panel.php");
+exit();
+// Terminates the script
+} else {
+$error = "Invalid login!";
+}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -19,6 +39,6 @@
             <input type="password" name="password" class="form-control" placeholder="••••••••" required>
         </div>
          <button type="submit" class="btn btn-green w-100">Anmelden</button>
-         <p class ="text-center mb-4"><a href="forgot_pw.php">Passwort vergessen</a></p>
+</form>
 </body>
     </html>
