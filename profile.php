@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["admin_logged_in"]) && !isset($_SESSION["user_logged_in"])) {
+    // KEIN LOGIN -> zurück zur Login-Seite
+    header("Location: login.php");
+    exit;
+}
+$profileImg = $_SESSION["profile_img"] ?? "../assets/img/profile-placeholder.png";
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>

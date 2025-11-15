@@ -10,10 +10,10 @@ if ($username === $adminUser && $password === $adminPass) {
 $_SESSION["admin_logged_in"] = true;
 // Set new session variable
 header("Location: admin_panel.php");
-exit();
+exit;
 // Terminates the script
 } else {
-$error = "Invalid login!";
+$error = "E-mail oder Passwort ist falsch!";
 }
 }
 ?>
@@ -29,6 +29,11 @@ $error = "Invalid login!";
      <div class="container log-inbox">
     <form method="POST">
         <h3 class="text-center mb-4">Anmelden</h3>
+        <?php if (!empty($error)): ?>
+            <div class="alert alert-danger">
+                <?= $error ?>
+            </div>
+        <?php endif; ?>
         <p class ="text-center mb-4">Noch kein Konto? <a href="registration.php">Registrieren</a></p>
         <div class="mb-3">
             <label class="form-label">E-Mail</label>
