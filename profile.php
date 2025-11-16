@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["admin_logged_in"]) && !isset($_SESSION["user_logged_in"])) {
-    // KEIN LOGIN -> zurück zur Login-Seite
+    
     header("Location: login.php");
     exit;
 }

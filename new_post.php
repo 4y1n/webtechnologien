@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["admin_logged_in"]) && !isset($_SESSION["user_logged_in"])) {
+    // KEIN LOGIN -> zurück zur Login-Seite
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!-- new_post.php -->
 <!DOCTYPE html>
 <html lang="de">
@@ -22,12 +32,12 @@
         <form action="logic/formhandler/upload_file.php" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="text" class="form-label">Text:</label>
-                <textarea name="text" id="text" class="form-control" rows="3" placeholder="Schreibe etwas..."></textarea>
+                <textarea name="text" id="text" class="form-control" rows="4" placeholder="Schreibe etwas..." required></textarea>
             </div>
 
             <div class="mb-3">
                 <label for="image" class="form-label">Bild hochladen:</label>
-                <input type="file" name="image" id="image" class="form-control" accept="image/png, image/jpeg" required>
+                <input type="file" name="image" id="image" class="form-control" accept="image/png, image/jpeg">
             </div>
 
             <button type="submit" class="btn btn-green">Upload</button>
