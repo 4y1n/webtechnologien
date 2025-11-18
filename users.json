@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "email": "garten@mail.com",
+        "username": "gaertner123",
+        "password": "$2y$10$5oywvEgCXgJalpOvWKcok.posJhPPvln7q3F3wdqOpKPo17GdzH12",
+        "profile_image": "assets\/img\/profile-placeholder.png"
+    }
+]

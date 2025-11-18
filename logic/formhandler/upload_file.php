@@ -1,22 +1,29 @@
 <?php
-
+session_start();
 var_dump($_POST);
 var_dump($_FILES);
-
+$user = $_SESSION["username"] ?? "Unbekannt";
 $text = $_POST['text'] ?? ''; //Holt den Text aus dem Feld
-
-if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-    die("Fehler beim Hochladen des Bildes."); 
-}//Checkt ob ein Bild hoichgeladen wurde
-
-
-// Upload-Verzeichnis festlegen
-$uploadDir = "../../uploads/";
-
-// Falls der Ordner nicht existiert, wird er erstellt
-if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0777, true);
+$category = $_POST['category'] ?? '';
+if ($text === '') {
+    die("Fehler: Text fehlt.");
 }
+if ($category === '') {
+    $category = "Unkategorisiert";
+}
+$imagePath = ""; // Standard: kein Bild
+
+
+// Prüfen, ob überhaupt ein Bild ausgewählt wurde
+if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+
+    $uploadDir = "../../uploads/";
+
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0777, true);
+    }
+}
+
 
 $id = str_pad(random_int(0, 9999999999), 10, '0', STR_PAD_LEFT); //id random Nummer vergeben
 
@@ -34,3 +41,32 @@ if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
 } else {
     echo "Fehler beim Speichern der Datei.";
 }
+$post = [
+    "id" => uniqid("post_"),
+    "user" => $user,
+    "text" => $text,
+    "image" => $imagePath,
+    "category" => $category,
+    "date" => date("d.m.Y H:i"),
+    "likes" => 0,
+    "comments" => []
+];
+
+// posts.json laden
+$postsFile = "../../posts.json";
+$posts = [];
+
+if (file_exists($postsFile)) {
+    $posts = json_decode(file_get_contents($postsFile), true);
+}
+
+// Beitrag hinzufügen
+$posts[] = $post;
+
+// speichern
+file_put_contents($postsFile, json_encode($posts, JSON_PRETTY_PRINT));
+
+// Weiterleitung
+header("Location: ../../index.php");
+exit;
+?>

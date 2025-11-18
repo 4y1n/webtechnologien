@@ -26,7 +26,7 @@ $username = $_SESSION["username"] ?? "Unbekannt";
       <div class="col-3"><div class="card"><h1>Dashboard</h1></div></div>
       <div class="col-2"><div class="card"><a href="profile.php">Profil bearbeiten</a></div></div>
       <div class="col-2"><div class="card"><a href="new_post.php">Neuen Beitrag erstellen</a></div></div>
-      <h3>@Username</h3>
+      <h3><?= htmlspecialchars($username)?></h3>
       
     </div>
  <div class="row">

@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userList[] = $newUser;
         file_put_contents($usersFile, json_encode($userList, JSON_PRETTY_PRINT));
 
-        $succes = true;
+        $success = true;
     }
 }
 
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         <?php if ($success): ?>
             <div class="alert alert-success">
-                Konto erfolgreich erstellt! <a href="login.php">Jetzt einloggen</a>
+                Konto erfolgreich erstellt!
             </div>
         <?php endif ?>
 

@@ -1,20 +1,42 @@
 <?php
 session_start();
 $error = "";// Hardcoded demo credentials
+
+$usersFile = "users.json";
+if (!file_exists($usersFile)) {
+    file_put_contents($usersFile, json_encode([])); // leeres Array, falls Datei fehlt
+}
+$userList = json_decode(file_get_contents($usersFile), true);
+if (!is_array($userList)) $userList = [];
+
 $adminUser = "admin@mail.com";
 $adminPass = "admin123";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$username = trim($_POST['email'] ?? '');
+$email = trim($_POST['email'] ?? '');
 $password = trim($_POST['password'] ?? '');
-if ($username === $adminUser && $password === $adminPass) {
+if ($email === $adminUser && $password === $adminPass) {
 $_SESSION["admin_logged_in"] = true;
+$_SESSION["username"] = "Admin";
+
 // Set new session variable
 header("Location: admin_panel.php");
 exit;
 // Terminates the script
-} else {
-$error = "E-mail oder Passwort ist falsch!";
-}
+} $found = false;
+    foreach ($userList as $user) {
+        if ($user["email"] === $email && password_verify($password, $user["password"])) {
+            $_SESSION["user_logged_in"] = true;
+            $_SESSION["username"] = $user["username"];
+            $_SESSION["profile_img"] = $user["profile_image"] ?? "../assets/img/profile-placeholder.png";
+            $found = true;
+            header("Location: overview.php"); // z. B. dein User-Dashboard
+            exit;
+        }
+    }
+     if (!$found) {
+        $error = "E-mail oder Passwort ist falsch!";
+    }
 }
 ?>
 

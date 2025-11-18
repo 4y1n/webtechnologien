@@ -1,24 +1,22 @@
 <?php
+session_start();
 
 $posts = [];
 
 if (file_exists("posts.json")) {
     $posts = json_decode(file_get_contents("posts.json"), true);
 }
-$activeCategory = $_GET["cat"] ?? "all";
+if (!is_array($posts)) {
+    $posts = [];
+}
 
-// Kategorien sammeln
-$categories = ["all"];
-foreach ($posts as $p) {
-    if (!in_array($p["category"], $categories)) {
-        $categories[] = $p["category"];
-    }
-  }
   $defaultCategories = ["Hilfe!!", "Pflanzen erkennen", "Tipps und Tricks", "Einfach so"];
+  
+ $activeCategory = $_GET["cat"] ?? null;
 ?>
 
 <!DOCTYPE html>
-<html lang="">
+<html lang="de">
 <head>
   <?php require_once "includes/head.php"; ?>
   <title>Home</title>
@@ -53,24 +51,37 @@ foreach ($posts as $p) {
 
     <h2 class="mt-4">Beiträge</h2>
     <div class="row mt-3">
-
         <?php
-        // Beiträge filtern
-        $filteredPosts = ($activeCategory == "all")
-            ? $posts
-            : array_filter($posts, fn($p) => $p["category"] == $activeCategory);
+        // FILTER NUR ANWENDEN WENN EINE KATEGORIE GEWÄHLT WURDE
+        $filteredPosts = $activeCategory
+            ? array_filter($posts, fn($p) => ($p["category"] ?? "") === $activeCategory)
+            : $posts;
 
         if (empty($filteredPosts)):
         ?>
             <p>Hier werden bald Beiträge zu sehen sein!</p>
+
         <?php else: ?>
 
-            <?php foreach (array_reverse($filteredPosts) as $post): ?>
+           <?php foreach (array_reverse($filteredPosts) as $post): ?>
+
+                <?php
+                // Fallbacks
+                $post["id"]       = $post["id"]       ?? uniqueid();
+                $post["user"]     = $post["user"]     ?? "Unbekannt";
+                $post["text"]     = $post["text"]     ?? "";
+                $post["image"]    = $post["image"]    ?? "";
+                $post["date"]     = $post["date"]     ?? "";
+                $post["category"] = $post["category"] ?? "Allgemein";
+                $post["likes"]    = $post["likes"]    ?? 0;
+                $post["comments"] = $post["comments"] ?? [];
+                ?>
+
                 <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-body">
 
-                            <h5><?= htmlspecialchars($post["user"] ?? "Unbekannt") ?></h5>
+                            <h5><?= htmlspecialchars($post["user"]) ?></h5>
 
                             <p><?= nl2br(htmlspecialchars($post["text"])) ?></p>
 
@@ -79,24 +90,26 @@ foreach ($posts as $p) {
                             <?php endif; ?>
 
                             <small class="text-muted d-block mb-2">
-                                <?= htmlspecialchars($post["date"]) ?> •
-                                Kategorie: <strong><?= htmlspecialchars($post["category"]) ?></strong>
+                                <?= htmlspecialchars($post["date"]) ?> • Kategorie: <strong><?= htmlspecialchars($post["category"]) ?></strong>
                             </small>
 
-                            <!-- LIKE BUTTON -->
+                            <!-- Like Button -->
                             <form action="logic/formhandler/like_post.php" method="POST" class="d-inline">
-                                <input type="hidden" name="id" value="<?= $post["id"] ?>">
-                                <button class="btn btn-sm btn-outline-success">❤️ <?= $post["likes"] ?></button>
+                                <input type="hidden" name="id" value="<?= htmlspecialchars($post["id"]) ?>">
+                                <button class="btn btn-sm btn-outline-success">
+                                    ❤️ <?= htmlspecialchars($post["likes"]) ?>
+                                </button>
                             </form>
 
-                            <!-- KOMMENTAR BUTTON -->
-                            <a href="post.php?id=<?= $post["id"] ?>" class="btn btn-sm btn-outline-primary">
+                            <!-- Kommentar-Button -->
+                            <a href="post.php?id=<?= htmlspecialchars($post["id"]) ?>" class="btn btn-sm btn-outline-primary">
                                 💬 Kommentare (<?= count($post["comments"]) ?>)
                             </a>
 
                         </div>
                     </div>
                 </div>
+
             <?php endforeach; ?>
 
         <?php endif; ?>

@@ -10,7 +10,7 @@ $params["domain"], $params["secure"], $params["httponly"]);
 }
 session_destroy();
 // Destroy the session
-header("Location: login.php");
-// Redirect back to login
+header("Location: index.php");
+
 exit();
 ?>

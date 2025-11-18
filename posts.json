@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "id": "post_691b5c6a60bd1",
+        "user": "gaertner123",
+        "text": "test test",
+        "image": "",
+        "category": "Einfach so",
+        "date": "17.11.2025 18:33",
+        "likes": 0,
+        "comments": []
+    }
+]

@@ -18,14 +18,16 @@ $profileImg = $_SESSION["profile_img"] ?? "../assets/img/profile-placeholder.png
     <?php require_once "includes/nav.php"; ?>
     <div class="container profile-box">
         <h3>Profileinstellungen</h3>
+       
+     <form action="logic/formhandler/upload_profile.php" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-4 text-center">
-            <img src="../assets/img/profile-placeholder.png" class="img-fluid" alt="Profilbild">
-            <input type="file" name="image" id="image" class="d-none" accept="image/png, image/jpeg" required>
-            <label for="image" class="btn btn-secondary btn-green w-100">Profilbild ändern</label>
+            <img src="<?= htmlspecialchars($profileImg) ?>" class="img-fluid rounded-circle mb-3 profile-img-preview" alt="Profilbild">
+                <input type="file" name="profile_img" id="profile_img" class="d-none" accept="image/png, image/jpeg">
+            <label for="profile_img" class="btn btn-secondary btn-green w-100">Profilbild ändern</label>
         </div>
+
         <div class="col-md-8">
-            <form method="POST" action="#">
                 <div class="mb-3">
                     <label class="form-label">E-Mail</label>
                     <input type="email" class="form-control" placeholder="Useremail">
@@ -50,11 +52,11 @@ $profileImg = $_SESSION["profile_img"] ?? "../assets/img/profile-placeholder.png
                     <label class="form-label">Neues Passwort bestätigen</label>
                     <input type="password" name="new_password_confirm" class="form-control" placeholder="••••••••">
                 </div>
+
         <div class="col-md-8">
-            <form method="POST">
-                <!-- Formularfelder -->
+
                 <button type="submit" class="btn btn-green me-2">Speichern</button>
-                <button type="reset" class="btn btn-secondary">Abbrechen</button>
+                
             </form>
         </div>
     </div>

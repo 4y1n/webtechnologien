@@ -33,9 +33,24 @@ function active($filename, $target) {
         <li class="nav-item">
           <a class="nav-link <?php echo active($filename, "registation.php"); ?>" href="registration.php">Konto erstellen</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link <?php echo active($filename, "login.php"); ?>" href="login.php">Anmelden</a>
-        </li>
+         <?php if (!empty($_SESSION["user_logged_in"]) || !empty($_SESSION["admin_logged_in"])): ?>
+
+                    <!-- SHOW WHEN LOGGED IN -->
+                    
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+
+                <?php else: ?>
+
+                    <!-- SHOW WHEN LOGGED OUT -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Login</a>
+                    </li>
+
+                <?php endif; ?>
+
       </ul>
     </div>
   </div>

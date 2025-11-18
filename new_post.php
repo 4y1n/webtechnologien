@@ -6,6 +6,8 @@ if (!isset($_SESSION["admin_logged_in"]) && !isset($_SESSION["user_logged_in"]))
     header("Location: login.php");
     exit;
 }
+$username = $_SESSION["username"] ?? "Unbekannt";
+$defaultCategories = ["Hilfe!!", "Pflanzen erkennen", "Tipps und Tricks", "Einfach so"];
 ?>
 
 <!-- new_post.php -->
@@ -34,6 +36,20 @@ if (!isset($_SESSION["admin_logged_in"]) && !isset($_SESSION["user_logged_in"]))
                 <label for="text" class="form-label">Text:</label>
                 <textarea name="text" id="text" class="form-control" rows="4" placeholder="Schreibe etwas..." required></textarea>
             </div>
+            
+          <div class="mb-3">
+              <label for="category" class="form-label"></label>
+              <select name="category" id="category" class="form-control">
+                  <option value="" disabled selected>Kategorie wählen</option>
+
+                  <?php foreach ($defaultCategories as $cat): ?>
+                      <option value="<?= htmlspecialchars($cat) ?>">
+                          <?= htmlspecialchars($cat) ?>
+                      </option>
+                  <?php endforeach; ?>
+
+              </select>
+          </div>
 
             <div class="mb-3">
                 <label for="image" class="form-label">Bild hochladen:</label>
