@@ -29,6 +29,7 @@ if (!is_array($posts)) {
   <div class="container">
     <div class="row">
       <h1>Home</h1>
+      <h2>Kategorien</h2>
     </div>
     
     <div class="row mb-4">
